@@ -1,0 +1,19 @@
+# Ambientes virtuais (Python)
+.venv/
+venv/
+env/
+ENV/
+
+# Arquivos gerados pelo Python
+*.pyc
+__pycache__/
+
+# Banco de dados local do Django (para não mandas seu banco de teste pro GitHub) 
+db.sqlite3
+
+# Arquivos de configuração e senhas (chaves secretas)
+.env
+
+# Pastas de IDEs
+.vscode/
+.idea/
