@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <h1>{{ viagem.nome }}</h1>
+    <p><strong>Destino:</strong> {{ viagem.destino }}</p>
+    <p>{{ viagem.descricao }}</p>
+</header>
+
+<section class="passageiros-section" style="margin-top: 20px;">
+    <h2>Passageiros Confirmados</h2>
+    <a href="{% url 'novo_passageiro' viagem.id %}" class="button">Adicionar Passageiro</a>
+
+    <div class="lista-passageiros" style="margin-top: 15px;">
+        {% for passageiro in passageiros %}
+        <div class="card-passageiro">
+            <h3>{{ passageiro.nome }}</h3>
+            <p>Documento: {{ passageiro.documento }}</p>
+            <p>Telefone: {{ passageiro.telefone }}</p>
+            <a href="{% url 'detalhes_passageiro' passageiro.id %}" class="button-sm">Detalhes</a>
+        </div>
+        {% empty %}
+        <p>Nenhum passageiro cadastrado para esta viagem ainda.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<br>
+<a href="{% url 'listar_viagens' %}" class="button button-secondary">Voltar para Viagens</a>
+{% endblock %}

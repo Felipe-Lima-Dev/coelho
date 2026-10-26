@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Viagem, Passageiro
 
-# Register your models here.
+# Registramos os modelos para que apareçam no painel de administração
+admin.site.register(Viagem)
+admin.site.register(Passageiro)

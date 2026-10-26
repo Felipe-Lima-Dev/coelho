@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoCheck - Login</title>
+    <link rel="stylesheet" href="{% static 'css/stylelogin.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="login">
+        <div class="card-log">
+            <h2>Entre em sua conta</h2>
+            <form method="POST">
+            {% csrf_token %}
+                <div class="log-field">
+                    <label for="user">Digite o nome de usuário</label>
+                    <input id="user" type="text" placeholder="Nome de usuário" required>
+                </div>
+
+                <div class="log-field">
+                    <label for="senha">Digite a sua senha</label>
+                    <input id="senha" type="password" placeholder="Senha" required>
+                </div>
+                <div class="button-log">
+                    <button type="submit">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

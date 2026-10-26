@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card-tab">
+    <div class="tab-titulo">
+        <h2>{{ viagem.nome }}</h2>
+        <a class="button" href="{% url 'novo_passageiro' viagem.id %}">Cadastrar Passageiro</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Documento</th>
+                <th>Telefone</th>
+                <th>Telefone de Emergência</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for passageiro in passageiros %}
+            <tr>
+                <td>{{ passageiro.nome }}</td>
+                <td>{{ passageiro.documento }}</td>
+                <td>{{ passageiro.telefone }}</td>
+                <td>{{ passageiro.telefone_emergencia }}</td>
+                <td>
+                    {% if passageiro.status == 'Presente' %}
+                        <p class="pre">Presente</p>
+                    {% else %}
+                        <p class="aus">Ausente</p>
+                    {% endif %}
+                </td>
+                <td>
+                    <a class="button button-tab" href="{% url 'detalhes_passageiro' passageiro.id %}">Detalhes</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6"><h3>Nenhum passageiro cadastrado para esta viagem ainda.</h3></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'listar_viagens' %}" class="button button-secondary">Voltar para Viagens</a>
+</div>
+{% endblock %}

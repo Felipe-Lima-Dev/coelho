@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Novo Passageiro para {{ viagem.nome }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-field">
+        <label for="name">Digite o nome completo do passageiro</label>
+        <input id="name" name="nome" type="text" placeholder="Nome completo" required>
+    </div>
+    <div class="form-2parts">
+        <div class="form-field">
+            <label for="id">Digite o documento de identificação (CPF se for brasileiro)</label>
+            <input id="id" name="documento" type="text" placeholder="Documento de identificação" required>
+        </div>
+        <div class="form-field">
+            <label for="nacao">Digite a nacionalidade do passageiro</label>
+            <input id="nacao" name="nacionalidade" type="text" placeholder="País" required>
+        </div>
+    </div>
+    <div class="form-2parts">
+        <div class="form-field">
+            <label for="cellcont">Digite o telefone de contato do passageiro</label>
+            <input id="cellcont" name="telefone" type="text" placeholder="Ex: (00)00000-0000" required>
+        </div>
+        <div class="form-field">
+            <label for="born">Digite a data de nascimento do passageiro</label>
+            <input id="born" name="data_nascimento" type="date" required>
+        </div>
+    </div>
+    <div class="form-2parts">
+        <div class="form-field">
+            <label for="nameeme">Digite o nome do contato de emergência</label>
+            <input id="nameeme" name="nome_emergencia" type="text" placeholder="Nome do contato de emergência" required>
+        </div>
+        <div class="form-field">
+            <label for="celleme">Digite o contato de emergência do passageiro</label>
+            <input id="celleme" name="telefone_emergencia" type="text" placeholder="Ex: (00)00000-0000" required>
+        </div>
+    </div>
+    <button type="submit" class="button">Cadastrar Passageiro</button>
+    <a href="{% url 'detalhes_viagem' viagem.id %}" class="button button-secondary">Cancelar</a>
+</form>
+{% endblock %}

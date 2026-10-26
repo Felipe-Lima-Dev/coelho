@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Ficha do Passageiro</h1>
+<div class="card-detalhes" style="margin: 20px 0;">
+    <p><strong>Nome:</strong> {{ passageiro.nome }}</p>
+    <p><strong>Documento:</strong> {{ passageiro.documento }}</p>
+    <p><strong>Telefone:</strong> {{ passageiro.telefone }}</p>
+    <p><strong>Telefone de Emergência:</strong> {{ passageiro.telefone_emergencia }}</p>
+    <p><strong>Viagem:</strong> {{ passageiro.viagem.nome }}</p>
+</div>
+<a href="{% url 'detalhes_viagem' passageiro.viagem.id %}" class="button button-secondary">Voltar à Viagem</a>
+{% endblock %}
