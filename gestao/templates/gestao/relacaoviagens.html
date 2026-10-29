@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="header-section" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<div class="rel">
     <h1>Relação de Viagens</h1>
     <a href="{% url 'nova_viagem' %}" class="button">Nova Viagem</a>
 </div>
-
+<div class="viagens">
 {% for viagem in viagens %}
-    <div class="viagens">
-        <div class="card-trip">
+    
+    <div class="card-trip">
             <h2>{{ viagem.nome }}</h2>
-            <p>{{ viagem.descricao }}</p>
-            <a href="{% url 'detalhes_viagem' viagem.id %}" class="button">Ver Viagem</a>
-        </div>
+        <p>{{ viagem.descricao }}</p>
+        <a href="{% url 'detalhes_viagem' viagem.id %}" class="button">Ver Viagem</a>
     </div>
+</div>
     {% empty %}
+    </div>
     <div class="card-trip">
         <h3>Você não tem nenhuma viagem cadastrada</h3>
     </div>

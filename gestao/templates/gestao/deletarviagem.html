@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-card">
+    <h2>Você tem certeza que quer deletar {{ viagem.nome }}?</h2>
+    <h4>Lembrando que só é possível apagar a viagem se todos os passageiros forem apagados</h4>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-buttons">
+            <input class="button" type="submit">
+            <a  class="button buttonvolta">Não</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

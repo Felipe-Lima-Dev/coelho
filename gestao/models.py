@@ -29,7 +29,7 @@ class Passageiro(models.Model):
     telefone_emergencia = models.CharField(max_length=20)
     
     # Campo para o Status/Presença
-    presente = models.BooleanField(default=False)
+    presente = models.CharField(default='off')
 
     # Relação Pai-Filho com PROTECT
     viagem = models.ForeignKey(Viagem, on_delete=models.PROTECT, related_name='passageiros')

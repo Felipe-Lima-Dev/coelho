@@ -6,6 +6,7 @@
         <h2>{{ viagem.nome }}</h2>
         <a class="button" href="{% url 'novo_passageiro' viagem.id %}">Cadastrar Passageiro</a>
     </div>
+    <a class="button button-tab" href="{% url 'infos_viagem' viagem.id %}">Detalhes</a>
     <table>
         <thead>
             <tr>
@@ -25,7 +26,7 @@
                 <td>{{ passageiro.telefone }}</td>
                 <td>{{ passageiro.telefone_emergencia }}</td>
                 <td>
-                    {% if passageiro.status == 'Presente' %}
+                    {% if passageiro.presente == 'on' %}
                         <p class="pre">Presente</p>
                     {% else %}
                         <p class="aus">Ausente</p>
@@ -43,6 +44,6 @@
         </tbody>
     </table>
     <br>
-    <a href="{% url 'listar_viagens' %}" class="button button-secondary">Voltar para Viagens</a>
+    <a href="{% url 'listar_viagens' %}" class="button">Voltar para Viagens</a>
 </div>
 {% endblock %}

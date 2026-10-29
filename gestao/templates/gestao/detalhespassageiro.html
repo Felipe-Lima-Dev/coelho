@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Ficha do Passageiro</h1>
-<div class="card-detalhes" style="margin: 20px 0;">
-    <p><strong>Nome:</strong> {{ passageiro.nome }}</p>
-    <p><strong>Documento:</strong> {{ passageiro.documento }}</p>
-    <p><strong>Telefone:</strong> {{ passageiro.telefone }}</p>
-    <p><strong>Telefone de Emergência:</strong> {{ passageiro.telefone_emergencia }}</p>
-    <p><strong>Viagem:</strong> {{ passageiro.viagem.nome }}</p>
+<div class="det-card">
+    <h2>{{ passageiro.nome }}</h2>
+    <div class="form-field">
+        <p><strong>Documento:</strong> {{ passageiro.documento }}</p>
+        <p><strong>Nacionalidade:</strong> {{ passageiro.nacionalidade }}</p>
+        <p><strong>Telefone:</strong> {{ passageiro.telefone }}</p>
+        <p><strong>Data de Nascimento:</strong> {{ passageiro.data_nascimento }}</p>
+        <p><strong>Nome do Contato de Emergência:</strong> {{ passageiro.nome_emergencia}}</p>
+        <p><strong>Telefone de Emergência:</strong> {{ passageiro.telefone_emergencia }}</p>
+        <p><strong>Viagem:</strong> {{ passageiro.viagem.nome }}</p>
+    </div>
+
+    <div class="form-buttons" style="margin-top: 20px;">
+        <a href="{% url 'detalhes_viagem' passageiro.viagem.id %}" class="button buttonvolta">Voltar</a>
+        <a href="{% url 'editar_passageiro' passageiro.id %}" class="button buttonvolta">Editar</a>
+        <a href="{% url 'delete_passageiro' passageiro.id %}" class="button">Excluir</a>
+    </div>
 </div>
-<a href="{% url 'detalhes_viagem' passageiro.viagem.id %}" class="button button-secondary">Voltar à Viagem</a>
 {% endblock %}

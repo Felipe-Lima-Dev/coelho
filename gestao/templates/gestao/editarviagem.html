@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-card">
+    <h2>Cadastrar Nova Viagem</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-field">
+            <label for="nome">Nome da Viagem:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-field">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" rows="4" required></textarea>
+        </div>
+        <div class="form-2parts">
+            <div class="form-field">
+                <label for="inicity">Digite a cidade de início da viagem</label>
+                <input id="inicity" name="cidade_inicio" type="text" placeholder="Escreva aqui a cidade de início" required>
+            </div>
+            <div class="form-field">
+                <label for="endcity">Digite a cidade de término da viagem</label>
+                <input id="endcity" name="cidade_termino" type="text" placeholder="Escreva aqui a cidade de término" required>
+            </div>
+        </div>
+        <div class="form-2parts">
+            <div class="form-field">
+                <label for="inidate">Selecione a data de início da viagem</label>
+                <input id="inidate" name="data_inicio" type="date" required>
+            </div>
+            <div class="form-field">
+                <label for="enddate">Selecione a data de término da viagem</label>
+                <input id="enddate" name="data_termino" type="date" required>
+            </div>
+        </div>
+        <div class="form-2parts">
+            <div class="form-field">
+                <label for="initime">Digite o horário de saída da viagem</label>
+                <input id="initime" name="horario_saida" type="time" required>
+            </div>
+            <div class="form-field">
+                <label for="endtime">Digite o horário de chegada da viagem</label>
+                <input id="endtime" name="horario_chegada" type="time" required>
+            </div>
+        </div>
+        <button type="submit">Criar Viagem</button>
+        <a href="{% url 'listar_viagens' %}" class="button">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

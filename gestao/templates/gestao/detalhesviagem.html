@@ -1,30 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<header>
-    <h1>{{ viagem.nome }}</h1>
-    <p><strong>Destino:</strong> {{ viagem.destino }}</p>
-    <p>{{ viagem.descricao }}</p>
-</header>
-
-<section class="passageiros-section" style="margin-top: 20px;">
-    <h2>Passageiros Confirmados</h2>
-    <a href="{% url 'novo_passageiro' viagem.id %}" class="button">Adicionar Passageiro</a>
-
-    <div class="lista-passageiros" style="margin-top: 15px;">
-        {% for passageiro in passageiros %}
-        <div class="card-passageiro">
-            <h3>{{ passageiro.nome }}</h3>
-            <p>Documento: {{ passageiro.documento }}</p>
-            <p>Telefone: {{ passageiro.telefone }}</p>
-            <a href="{% url 'detalhes_passageiro' passageiro.id %}" class="button-sm">Detalhes</a>
-        </div>
-        {% empty %}
-        <p>Nenhum passageiro cadastrado para esta viagem ainda.</p>
-        {% endfor %}
+<div class="det-card">
+    <h2>{{ viagem.nome }}</h2>
+    <div class="form-field">
+        <p><strong>Descrição:</strong> {{ viagem.descricao }}</p>
+        <p><strong>Cidade de Inicío:</strong> {{ viagem.cidade_inicio }}</p>
+        <p><strong>Cidade de Término:</strong> {{ viagem.cidade_termino }}</p>
+        <p><strong>Data de Início:</strong> {{ viagem.data_inicio }}</p>
+        <p><strong>Data de Término:</strong> {{ viagem.data_termino }}</p>
+        <p><strong>Horário de Saída:</strong> {{ viagem.horario_saida }}</p>
+        <p><strong>Horário de Chegada:</strong> {{ viagem.horario_chegada }}</p>
     </div>
-</section>
-
-<br>
-<a href="{% url 'listar_viagens' %}" class="button button-secondary">Voltar para Viagens</a>
+    
+    <div class="form-buttons" style="margin-top: 20px;">
+        <a href="{% url 'detalhes_viagem' viagem.id %}" class="button buttonvolta">Voltar</a>
+        <a href="{% url 'editar_viagem' viagem.id %}" class="button buttonvolta">Editar</a>
+        <a href="{% url 'delete_viagem' viagem.id %}" class="button">Excluir</a>
+    </div>
+</div>
 {% endblock %}
